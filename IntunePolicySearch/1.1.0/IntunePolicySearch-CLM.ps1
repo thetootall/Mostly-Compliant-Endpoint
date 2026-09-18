@@ -5,6 +5,25 @@
   Searches Settings Catalog, legacy device configuration, compliance, and
   Administrative Templates policies through Microsoft Graph. Reuses a valid
   Graph session and does not disconnect unless -DisconnectOnExit is specified.
+
+This version includes the corrections from every error encountered so far:
+
+Reuses an active, validated Microsoft Graph session
+Leaves the Graph session connected by default
+Safely processes @odata.nextLink
+Uses -OutputType PSObject to normalize Graph responses
+Handles ordered dictionaries without converting them to PSCustomObject
+Contains no [pscustomobject]@{} conversions
+Contains no explicit instance method calls
+Contains no static .NET method calls
+Prevents empty Write-Progress -Status values
+Validates Settings Catalog policy IDs before constructing URLs
+Validates ADMX policy IDs before constructing URLs
+Validates ADMX definition value IDs before constructing URLs
+Skips malformed Graph records instead of generating URLs containing //definitionValues
+Preserves Settings Catalog, legacy policy, compliance policy, and ADMX searches
+Supports CSV export and pipeline output
+  
 #>
 [CmdletBinding()]
 param(
